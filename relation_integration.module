@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Relation integration feature.
+ */
+
+include_once('relation_integration.features.inc');
