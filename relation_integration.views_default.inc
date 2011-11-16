@@ -26,6 +26,7 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -36,7 +37,9 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['id'] = 'relation_base_baz_right_node';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['table'] = 'relation';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['field'] = 'relation_base_baz_right_node';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node']['label'] = 'Baz relation->node';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['required'] = 1;
+  $handler->display->display_options['relationships']['relation_base_baz_right_node']['r_index'] = '0';
   /* Relationship: Content: Relation: Baz (node <-> node) */
   $handler->display->display_options['relationships']['relation_baz_node']['id'] = 'relation_baz_node';
   $handler->display->display_options['relationships']['relation_baz_node']['table'] = 'node';
@@ -117,6 +120,33 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['fields']['relationtest']['empty_zero'] = 0;
   $handler->display->display_options['fields']['relationtest']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['relationtest']['field_api_classes'] = 0;
+  /* Field: Relation: endpoints */
+  $handler->display->display_options['fields']['endpoints']['id'] = 'endpoints';
+  $handler->display->display_options['fields']['endpoints']['table'] = 'field_data_endpoints';
+  $handler->display->display_options['fields']['endpoints']['field'] = 'endpoints';
+  $handler->display->display_options['fields']['endpoints']['label'] = '';
+  $handler->display->display_options['fields']['endpoints']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['endpoints']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['endpoints']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['endpoints']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['endpoints']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['endpoints']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['endpoints']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['endpoints']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['endpoints']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['endpoints']['click_sort_column'] = 'entity_type';
+  $handler->display->display_options['fields']['endpoints']['group_rows'] = 1;
+  $handler->display->display_options['fields']['endpoints']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['endpoints']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['endpoints']['field_api_classes'] = 0;
   /* Contextual filter: Relation: endpoints (endpoints:entity_id) */
   $handler->display->display_options['arguments']['endpoints_entity_id']['id'] = 'endpoints_entity_id';
   $handler->display->display_options['arguments']['endpoints_entity_id']['table'] = 'field_data_endpoints';
