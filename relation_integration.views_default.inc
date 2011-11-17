@@ -17,7 +17,7 @@ function relation_integration_views_default_views() {
   $view->base_table = 'relation';
   $view->human_name = 'Relation integration';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -37,17 +37,16 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['id'] = 'relation_base_baz_right_node';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['table'] = 'relation';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['field'] = 'relation_base_baz_right_node';
-  $handler->display->display_options['relationships']['relation_base_baz_right_node']['label'] = 'Baz relation->node';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node']['label'] = 'Baz source node';
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['required'] = 1;
   $handler->display->display_options['relationships']['relation_base_baz_right_node']['r_index'] = '0';
-  /* Relationship: Content: Relation: Baz (node <-> node) */
-  $handler->display->display_options['relationships']['relation_baz_node']['id'] = 'relation_baz_node';
-  $handler->display->display_options['relationships']['relation_baz_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['relation_baz_node']['field'] = 'relation_baz_node';
-  $handler->display->display_options['relationships']['relation_baz_node']['relationship'] = 'relation_base_baz_right_node';
-  $handler->display->display_options['relationships']['relation_baz_node']['label'] = 'Baz node-node';
-  $handler->display->display_options['relationships']['relation_baz_node']['required'] = 1;
-  $handler->display->display_options['relationships']['relation_baz_node']['r_index'] = '0';
+  /* Relationship: Relation: Relation: Baz (relation -> node) */
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['id'] = 'relation_base_baz_right_node_1';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['table'] = 'relation';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['field'] = 'relation_base_baz_right_node';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['label'] = 'Baz target node';
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['required'] = 0;
+  $handler->display->display_options['relationships']['relation_base_baz_right_node_1']['r_index'] = '1';
   /* Field: Relation: Rid */
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'relation';
@@ -75,29 +74,6 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['fields']['bar']['empty_zero'] = 0;
   $handler->display->display_options['fields']['bar']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['bar']['field_api_classes'] = 0;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'relation_baz_node';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Relation: relation test */
   $handler->display->display_options['fields']['relationtest']['id'] = 'relationtest';
   $handler->display->display_options['fields']['relationtest']['table'] = 'field_data_relationtest';
@@ -147,6 +123,54 @@ function relation_integration_views_default_views() {
   $handler->display->display_options['fields']['endpoints']['delta_offset'] = '0';
   $handler->display->display_options['fields']['endpoints']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['endpoints']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'relation_base_baz_right_node';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Source title';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'relation_base_baz_right_node_1';
+  $handler->display->display_options['fields']['title']['label'] = 'Target title';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Contextual filter: Relation: endpoints (endpoints:entity_id) */
   $handler->display->display_options['arguments']['endpoints_entity_id']['id'] = 'endpoints_entity_id';
   $handler->display->display_options['arguments']['endpoints_entity_id']['table'] = 'field_data_endpoints';
